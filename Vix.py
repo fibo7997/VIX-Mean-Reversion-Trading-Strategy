@@ -11,8 +11,8 @@ nest_asyncio.apply()
 initial_capital = 10000
 moving_window = 200  # Moving average window for Z-score in hours
 max_position_pct = 0.3
-z_score_entry_threshold = 1.5  # Tripled entry threshold for wider bands
-z_score_exit_threshold = 0.6   # Tripled exit threshold for wider bands
+z_score_entry_threshold = 1.5  # entry threshold for wider bands
+z_score_exit_threshold = 0.6   # exit threshold for wider bands
 take_profit_pct = 0.5  # 50% take-profit threshold
 stop_loss_pct = 0.2  # 20% stop-loss threshold
 
