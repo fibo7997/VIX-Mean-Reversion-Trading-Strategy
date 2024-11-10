@@ -23,8 +23,8 @@ Compute the Z-score of the VIX close price based on this moving average and stan
 3. Trade Entry and Exit:
 
 Entry:
-Short the VIX when the Z-score rises above a specified upper threshold (e.g., 0.5).
-Go long on the VIX when the Z-score falls below a specified lower threshold (e.g., -0.5).
+Short the VIX when the Z-score rises above a specified upper threshold (e.g., 1.5).
+Go long on the VIX when the Z-score falls below a specified lower threshold (e.g., -0.6).
 Exit:
 Exit a trade when the Z-score returns to a neutral range (close to 0).
 Alternatively, exit based on take-profit or stop-loss thresholds (e.g., 50% profit or 20% loss on the position).
