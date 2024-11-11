@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from ib_insync import *
 
-# Apply nest_asyncio to allow async functions in Jupyter Notebooks
+# to allow async functions in Jupyter Notebook
 nest_asyncio.apply()
 
 # Parameters
@@ -19,14 +19,14 @@ stop_loss_pct = 0.2  # 20% stop-loss threshold
 # Connect to IBKR API
 ib = IB()
 try:
-    ib.connect('333.0.0.1', 7496, clientId=##)  # Use 7496 for live trading
+    ib.connect('333.0.0.1', 7496, clientId=##)  
     
     # Verify connection
     if ib.isConnected():
         print("Connected to IBKR API")
 
         # Define VIX contract
-        contract = Index('VIX', 'CBOE')  # Adjust the symbol if necessary
+        contract = Index('VIX', 'CBOE')  
 
         # Request hourly data for the last 3 years
         bars = ib.reqHistoricalData(
@@ -40,9 +40,9 @@ try:
 
         # Convert data to DataFrame
         df = util.df(bars)
-        df.set_index('date', inplace=True)  # Set date as index
+        df.set_index('date', inplace=True)  
         print("Hourly Close Data Head:")
-        print(df.head())  # Display the first few rows of hourly data
+        print(df.head())  
 
         # Calculate hourly returns
         vix_data = df[['close']].copy()
@@ -54,7 +54,7 @@ try:
         vix_data['moving_z_score'] = (vix_data['close'] - vix_data['moving_avg']) / vix_data['moving_std']
         vix_data.dropna(inplace=True)
 
-        # Function to run a backtest on the strategy without mean reversion exit
+        # Function to run a backtest on the strategy
         def run_backtest():
             capital = initial_capital
             positions = 0
@@ -73,7 +73,7 @@ try:
                 max_capital_for_trade = max_position_pct * capital
 
                 if z_val > z_score_entry_threshold and positions == 0:
-                    # Enter a Sell (short) position
+                    # Enter a short position
                     position_change = -max_capital_for_trade / close_price
                     entry_capital = max_capital_for_trade
                     entry_date = date
@@ -90,7 +90,7 @@ try:
                     })
 
                 elif z_val < -z_score_entry_threshold and positions == 0:
-                    # Enter a Buy (long) position
+                    # Enter a long position
                     position_change = max_capital_for_trade / close_price
                     entry_capital = max_capital_for_trade
                     entry_date = date
