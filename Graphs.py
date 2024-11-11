@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
-# `vix_data` contains the VIX close prices and the Z-score information
-# `strategy_results` contains the trade entries and exits
+#  vix_data contains the VIX close prices and the Z-score information
+#  strategy_results contains the trade entries and exits
 
 def plot_zscore_bands_and_positions(vix_data, strategy_results):
     # Plot the VIX close price
@@ -29,15 +29,12 @@ def plot_zscore_bands_and_positions(vix_data, strategy_results):
     for exit in exit_points:
         plt.scatter(exit[0], exit[1], color="red", marker="v", s=100, label="Short Entry" if exit_points.index(exit) == 0 else "")
 
-    # Labels and legend
+    # Plotting
     plt.title("VIX Close Price with Z-score Bands and Trade Positions")
     plt.xlabel("Date")
     plt.ylabel("VIX Value")
     plt.legend()
     plt.grid(True)
-
-    # Show the plot
     plt.show()
 
-# Call the function to plot
 plot_zscore_bands_and_positions(vix_data, strategy_results)
